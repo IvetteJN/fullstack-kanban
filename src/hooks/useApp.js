@@ -1,4 +1,4 @@
-import { collection, addDoc, serverTimestamp, getDocs } from 'firebase/firestore';
+import { collection, addDoc, serverTimestamp, getDocs, query, orderBy } from 'firebase/firestore';
 import { db } from '../firebase';
 import { getAuth } from 'firebase/auth';
 import useStore from '../store';
@@ -8,13 +8,14 @@ const useApp = () => {
 
     const {currentUser: {uid}} = getAuth()
     const boardsColRef = collection(db, `user/${uid}/boards`);
-    const { setBoards } = useStore();
+    const { setBoards, addBoard } = useStore();
 
     const createBoard = async ({ name, color }) => {
         try{
             await addDoc(boardsColRef, {
                 name, color, createdAt: serverTimestamp(),
             });
+            addBoard({name, color, createdAt: new Date().toLocaleDateString()});
         }catch(err){
             //to do showing the msg in toastr
             console.log(err);
@@ -23,7 +24,8 @@ const useApp = () => {
     };
     const fetchBoards = async (setLoading) => {
         try {
-            const querySnapshot = await getDocs(boardsColRef)
+            const q = query(boardsColRef, orderBy('createdAt', 'desc'))
+            const querySnapshot = await getDocs(q)
             const boards = querySnapshot.docs.map((doc) => ({
                 ...doc.data(), id: doc.id, createdAt: doc.data().createdAt.toDate().toLocaleDateString() }));
             setBoards(boards)

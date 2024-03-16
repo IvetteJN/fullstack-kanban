@@ -14,7 +14,7 @@ import BoardsScreen from './screens/BoardsScreen'
 //utils
 import PublicOnlyRoute from './components/utils/PublicOnlyRoute'
 import PrivateRoute from './components/utils/PrivateRoute';
-
+import SnackbarManager from './components/layout/SnackbarManager';
 
 const App = () => {
   const { loader, setLoginStatus } = useStore()
@@ -31,6 +31,7 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+      <SnackbarManager />
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<PublicOnlyRoute Component={AuthScreen} />} />

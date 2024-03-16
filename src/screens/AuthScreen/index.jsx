@@ -4,12 +4,14 @@ import LogoImg from '../../assets/KANBANBoard.png';
 import ImageEl from '../../components/utils/ImageEl';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../firebase'
+import useStore from '../../store';
 
 const initForm = { email: '', password: '', }
 const AuthScreen = () => {
     const [loading, setLoading] = useState(false);
     const [isLogin, setIsLogin] = useState(true);
     const [form, setForm] = useState(initForm);
+    const { setToastr } = useStore();
 
     const authText = isLogin ? 'Do not have an account?' : 'Already have an account?';
 
@@ -25,7 +27,7 @@ const AuthScreen = () => {
             }
         } catch (err) {
             const msg = err.code.split('auth/')[1].split('-').join(' ')
-            console.log(msg)
+            setToastr(msg);
             setLoading(false);
         }
     };

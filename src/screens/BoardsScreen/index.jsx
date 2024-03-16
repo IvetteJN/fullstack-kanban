@@ -13,7 +13,7 @@ const BoardsScreen = () => {
     const [loading, setLoading] = useState(true);
     const [showModal, setShowModal] = useState(false);
     const { fetchBoards } = useApp()
-    const { areBoardsFetched } = useStore;
+    const { boards, areBoardsFetched } = useStore();
 
     useEffect(() => {
         if (!areBoardsFetched) fetchBoards(setLoading);
@@ -29,10 +29,7 @@ const BoardsScreen = () => {
 
             <Stack px={3} mt={5}>
                 <Grid container spacing={4}>
-                    <BoardCard />
-                    <BoardCard />
-                    <BoardCard />
-                    <BoardCard />
+                    {boards.map((board) => (<BoardCard key={board.id} {...board} />))}
                 </Grid>
             </Stack>
         </>

@@ -17,6 +17,24 @@ const theme = createTheme({
       },
       primary:{
         main: '#25c2ce',
+      },
+    },
+    components: {
+      MuiSnackbar:{
+        defaultProps:{
+          anchorOrigin:{
+            vertical:'top',
+            horizontal: 'center',
+          },
+        },
+      },
+      MuiSnackbarContent:{
+        styleOverrides:{
+          message:{
+            fontWeight:600,
+            textTransform: 'capitalize',
+          }
+        }
       }
     },
     typography: {
