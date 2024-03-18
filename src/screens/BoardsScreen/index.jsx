@@ -12,12 +12,12 @@ import useStore from '../../store';
 const BoardsScreen = () => {
     const [loading, setLoading] = useState(true);
     const [showModal, setShowModal] = useState(false);
-    const { fetchBoards } = useApp()
+    const { fetchBoards } = useApp();
     const { boards, areBoardsFetched } = useStore();
 
     useEffect(() => {
         if (!areBoardsFetched) fetchBoards(setLoading);
-        else setLoading(false)
+        else setLoading(false);
     }, []);
 
     if (loading) return <AppLoader />;
@@ -27,11 +27,17 @@ const BoardsScreen = () => {
             {showModal && <CreateBoardModal closeModal={() => setShowModal(false)} />}
             {/* <NoBoards /> */}
 
-            <Stack px={3} mt={5}>
-                <Grid container spacing={4}>
-                    {boards.map((board) => (<BoardCard key={board.id} {...board} />))}
-                </Grid>
-            </Stack>
+            {!boards.length ? (
+                <NoBoards />
+            ) : (
+                <Stack mt={5} px={3}>
+                    <Grid container spacing={{ xs: 2, sm: 4 }}>
+                        {boards.map((board) => (
+                            <BoardCard key={board.id} {...board} />
+                        ))}
+                    </Grid>
+                </Stack>
+            )}
         </>
     );
 };

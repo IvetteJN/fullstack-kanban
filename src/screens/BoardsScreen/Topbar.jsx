@@ -1,20 +1,53 @@
-import { AppBar, Toolbar, Button, Stack } from '@mui/material'
+import {
+    AppBar,
+    Toolbar,
+    Button,
+    Stack,
+    useMediaQuery,
+    IconButton,
+} from "@mui/material";
+import ImageEl from "../../components/utils/ImageEl";
 import LogoImg from '../../assets/KANBANBoardTopbar.png';
-import ImageEl from '../../components/utils/ImageEl';
-import LogoutIcon from '@mui/icons-material/ExitToApp';
+import LogoutIcon from "@mui/icons-material/ExitToApp";
+import CreateBoardIcon from "@mui/icons-material/AddCircle";
+import { signOut } from "firebase/auth";
+import { auth } from "../../firebase";
 
 const Topbar = ({ openModal }) => {
+    const isXs = useMediaQuery((theme) => theme.breakpoints.only("xs"));
+
     return (
-        <AppBar position='static'>
+        <AppBar position="static">
             <Toolbar sx={{ justifyContent: 'space-between', backgroundColor: '#121212' }}>
                 <ImageEl sx={{ width: 100 }} src={LogoImg} alt='LogoKanban' />
-                <Stack direction='row' spacing={2}>
-                    <Button onClick={openModal} variant='contained'> Create Board </Button>
-                    <Button startIcon={<LogoutIcon />} color='inherit'>Logout</Button>
+                <Stack direction="row" spacing={2}>
+                    {isXs ? (
+                        <>
+                            <IconButton onClick={openModal} color="primary">
+                                <CreateBoardIcon />
+                            </IconButton>
+                            <IconButton onClick={() => signOut(auth)}>
+                                <LogoutIcon />
+                            </IconButton>
+                        </>
+                    ) : (
+                        <>
+                            <Button onClick={openModal} variant="contained">
+                                Create board
+                            </Button>
+                            <Button
+                                onClick={() => signOut(auth)}
+                                startIcon={<LogoutIcon />}
+                                color="inherit"
+                            >
+                                Logout
+                            </Button>
+                        </>
+                    )}
                 </Stack>
             </Toolbar>
         </AppBar>
-    )
-}
+    );
+};
 
-export default Topbar
+export default Topbar;
