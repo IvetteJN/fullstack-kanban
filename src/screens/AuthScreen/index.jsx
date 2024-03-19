@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Container, Stack, TextField, Button, Typography } from '@mui/material';
-import LogoImg from '../../assets/KANBANBoard.png';
+import { Container, Stack, TextField, Button, Typography, AppBar, Toolbar } from '@mui/material';
+import LogoImg from '../../assets/KANBANBoardTopbar.png';
 import ImageEl from '../../components/utils/ImageEl';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../firebase'
@@ -43,10 +43,14 @@ const AuthScreen = () => {
 
     return (
         <Container
-            maxWidth="xs"
+            maxWidth="xs" sx={{ paddingTop: '160px' }}
         >
-            <Stack mb={3} alignItems="center" textAlign="center">
-                <ImageEl src={LogoImg} width={200} alt="FlowBoard" />
+            <AppBar position="fixed">
+                <Toolbar sx={{ backgroundColor: '#121212' }}>
+                    <ImageEl src={LogoImg} width={100} alt="FlowBoard" />
+                </Toolbar>
+            </AppBar>
+            <Stack mb={3} mt={3} alignItems="center" textAlign="center">
                 <Typography>
                     Visualize Your Workflow for Increased Productivity.
                     <br />
