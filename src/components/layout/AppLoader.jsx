@@ -1,11 +1,10 @@
-import { Stack, CircularProgress } from '@mui/material'
-
+import { Stack, CircularProgress } from "@mui/material";
 const AppLoader = () => {
     return (
-        <Stack mt={10} alignItems='center'>
+        <Stack mt={10} alignItems="center">
             <CircularProgress />
         </Stack>
-    )
-}
+    );
+};
 
-export default AppLoader
+export default AppLoader;
