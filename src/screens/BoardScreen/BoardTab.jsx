@@ -30,7 +30,7 @@ const BoardTab = ({
                     xs={12}
                     sm={4}
                 >
-                    <Stack p={3} bgcolor="#000">
+                    <Stack p={3} bgcolor="#121212">
                         <Stack
                             direction="row"
                             alignItems="center"

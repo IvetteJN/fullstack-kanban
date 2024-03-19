@@ -44,13 +44,10 @@ const AuthScreen = () => {
     return (
         <Container
             maxWidth="xs"
-            sx={{
-                mt: 5,
-            }}
         >
-            <Stack mb={4} spacing={2} alignItems="center" textAlign="center">
+            <Stack mb={3} alignItems="center" textAlign="center">
                 <ImageEl src={LogoImg} width={200} alt="FlowBoard" />
-                <Typography color="rgba(255,255,255, .6)">
+                <Typography>
                     Visualize Your Workflow for Increased Productivity.
                     <br />
                     Access Your Tasks Anytime, Anywhere
@@ -84,12 +81,12 @@ const AuthScreen = () => {
                     cursor: "pointer",
                 }}
                 onClick={() => setIsLogin((o) => !o)}
-                mt={3}
+                mt={2}
                 textAlign="center"
             >
                 {authText}
             </Typography>
-        </Container>
+        </Container >
     );
 };
 

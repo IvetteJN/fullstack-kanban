@@ -24,7 +24,7 @@ const CreateBoardModal = ({ closeModal }) => {
         if (!tName) return setToastr("You need to enter board name");
         if (!/^[a-zA-Z0-9\s]{1,20}$/.test(tName))
             return setToastr(
-                "Board name cannot contain special characters and should not be more than 20 chars"
+                "Board name cannot contain special characters and should not be more than 20 characters"
             );
         try {
             setLoading(true);

@@ -10,7 +10,7 @@ import AppLoader from "../../components/layout/AppLoader";
 import ShiftTaskModal from "./ShiftTaskModal";
 
 export const statusMap = {
-    todos: "Todos",
+    todos: "To Do",
     inProgress: "In Progress",
     completed: "Completed",
 };

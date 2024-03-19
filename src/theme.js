@@ -1,12 +1,12 @@
 import { createTheme } from '@mui/material'
 
 export const colors = [
-  '#A5C3CF',
-  '#F3D3B8',
-  '#E59D5C',
-  '#A99F3C',
-  '#AEBD38',
-  '#D70026'
+  '#565175',
+  '#538a95',
+  '#67b79e',
+  '#ffb727',
+  '#e4491c',
+  '#840905'
 ]
 
 const theme = createTheme({

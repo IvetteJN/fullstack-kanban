@@ -16,6 +16,7 @@ import BoardScreen from "./screens/BoardScreen";
 import PublicOnlyRoute from "./components/utils/PublicOnlyRoute";
 import PrivateRoute from "./components/utils/PrivateRoute";
 import SnackbarManager from "./components/layout/SnackbarManager";
+import Footer from "./components/layout/Footer"
 
 const App = () => {
   const { loader, setLoginStatus } = useStore();
@@ -51,6 +52,7 @@ const App = () => {
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </BrowserRouter>
+      <Footer />
     </ThemeProvider>
   );
 };
